@@ -1,0 +1,14 @@
+<h2>COUNTER: {{ current$ | async }}</h2>
+
+<button (click)="increment()">++</button>
+
+<br-create-book (bookCreated)="add($event)"></br-create-book>
+<hr>
+
+<br-book
+  *ngFor="let b of books; let i = index"
+  [book]="b"
+  (rated)="reorderBooks()"
+  ></br-book>
+
+Anzahl der Bücher: {{ books.length + 1}}

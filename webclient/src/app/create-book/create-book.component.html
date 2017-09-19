@@ -1,0 +1,31 @@
+<form #myForm="ngForm" (ngSubmit)="add()">
+  <div class="form-group">
+    ISBN:
+    <input class="form-control" name="isbn"
+    [(ngModel)]="book.isbn"
+    required
+    minlength="3"
+    #isbn="ngModel">
+
+    <div [hidden]="isbn.valid || isbn.pristine" class="alert alert-danger">
+      Bitte geben Sie eine gültige ISBN an!
+    </div>
+  </div>
+  <div class="form-group">
+    Title:
+    <input class="form-control" name="title"
+    [(ngModel)]="book.title"
+    required>
+  </div>
+
+  <div class="form-group">
+    Description:
+    <textarea name="description" class="form-control"
+    [(ngModel)]="book.description"></textarea>
+  </div>
+
+  <button type="submit"
+     class="btn btn-danger"
+    [disabled]="myForm.invalid"
+    >Save</button>
+</form>
